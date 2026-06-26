@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Java
+backend/target/
+backend/.mvn/
+
+# Python
+agent/.venv/
+agent/__pycache__/
+agent/**/__pycache__/
+agent/.pytest_cache/
+agent/.ruff_cache/
+*.pyc
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Env
+.env
+*.local
+
+# Logs
+*.log
+logs/
+
+# Docker volumes / generated data
+infra/data/

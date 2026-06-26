@@ -1,0 +1,12 @@
+server:
+  port: ${BACKEND_PORT:8080}
+
+spring:
+  application:
+    name: agri-uav-backend
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
