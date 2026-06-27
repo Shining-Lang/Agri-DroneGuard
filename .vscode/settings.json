@@ -1,0 +1,7 @@
+{
+  "cSpell.language": "en,zh-CN",
+  "cSpell.ignoreRegExpList": [
+    "[\\u4e00-\\u9fff]+"
+  ],
+  "markdown.validate.enabled": true
+}
