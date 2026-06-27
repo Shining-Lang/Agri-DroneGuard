@@ -4,6 +4,14 @@ server:
 spring:
   application:
     name: agri-uav-backend
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:agri_uav}
+    username: ${POSTGRES_USER:agri_uav}
+    password: ${POSTGRES_PASSWORD:agri_uav_dev}
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    validate-on-migrate: true
 
 management:
   endpoints:
