@@ -58,6 +58,35 @@ scripts/   本地开发和演示辅助脚本
 4. 启动 Vue3 前端，展示项目管理台雏形。
 5. 在 `docs/` 中持续记录技术选型、ADR 和深入设计。
 
+## 当前进度
+
+- 已完成 Spring Boot、FastAPI、Vue3 项目骨架和健康检查。
+- 已通过 Docker Compose 配置 PostgreSQL/PostGIS 与 Redis。
+- 已使用 Flyway 创建打药申请表及必要索引、约束。
+- 已实现创建打药申请接口、请求校验、事务写入和统一校验错误响应。
+- 已使用 Testcontainers 验证 Flyway 和 HTTP 到 PostgreSQL 的完整链路。
+
+## 创建打药申请
+
+```http
+POST /api/v1/spray-applications
+Content-Type: application/json
+```
+
+```json
+{
+  "applicantName": "张三",
+  "villageCode": "VILLAGE-001",
+  "parcelCode": "PARCEL-001",
+  "cropType": "小麦",
+  "areaMu": 500.00,
+  "targetPest": "蚜虫",
+  "plannedDate": "2030-06-01"
+}
+```
+
+创建成功时返回 HTTP `201 Created`，申请初始状态为 `SUBMITTED`。参数不合法时返回 HTTP `400 Bad Request`，并在 `fieldErrors` 中说明具体字段错误。
+
 ## 技术栈
 
 | 模块 | 技术 |
@@ -99,4 +128,4 @@ docs/
 infra -> backend -> agent -> frontend -> end-to-end demo
 ```
 
-当前仓库已经完成第一版目录骨架，后续会逐步补齐业务模型、数据库表、Agent 工作流、审批流和模拟执行流程。
+当前仓库已经跑通第一条 Java 业务链路：创建打药申请并持久化到 PostgreSQL。后续将继续实现申请查询、状态流转、Agent 任务投递、审批流和模拟执行流程。
